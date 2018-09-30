@@ -356,6 +356,7 @@ def gen_manager_m_file(parent_dir, classname, variables, element_name, import_cl
         create_func_content = create_func_content + '\t{\n'
         create_func_content = create_func_content + '\t\t%s *item = [[%s alloc] init];\n' % (cn, cn)
         create_func_content = create_func_content + '\t\tNSLog(@\"%@\", [item getInfo]);\n'
+        create_func_content = create_func_content + '\t\t[item dealloc];\n'
         create_func_content = create_func_content + '\t}\n'
 
         index = index + 1
