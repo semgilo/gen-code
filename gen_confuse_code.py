@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import random
 import os,shutil
-import string,sys,json;
+import string,sys,json
 import time
 import datetime
 import hashlib 
@@ -467,5 +467,15 @@ def gen_codes(dst_dir, fold_num = 5, class_num_per_dir = 10, delt_num = 3):
 
 if __name__ == '__main__':
     _pre_name = gen_pre_name()
-    gen_codes(DEAULT_DST_PATH, random.uniform(5, 10), 10, 3)
-
+    
+    file_dir = os.path.split(os.path.abspath(__file__))[0]
+    
+    # load words
+    noun_file = open(file_dir + '/noun_words', 'r')
+    COMMON_WORDS = noun_file.readlines()
+    noun_file.close()
+    for i in xrange(0, len(COMMON_WORDS)):
+        COMMON_WORDS[i] = COMMON_WORDS[i].replace('\r\n', '')
+        
+    gen_codes(DEAULT_DST_PATH, random.uniform(2, 4), 10, 3)
+    exit(0)
