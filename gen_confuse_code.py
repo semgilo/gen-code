@@ -447,14 +447,14 @@ def gen_codes(dst_dir, fold_num = 5, class_num_per_dir = 10, delt_num = 3):
 
     for x in xrange(1,10):   
         readme_file.write('-------------------- code %d ----------------------\n' % x)
-        elements1 = get_elements_by_random(fold_name_arr, random.uniform(1, 4))
+        elements1 = get_elements_by_random(fold_name_arr, random.uniform(1, fold_num))
         
         import_content = ''
         operate_content = ''
         for name in elements1:
             manager_name = gen_class_name(_pre_name, name, 'Manager')
             import_content = import_content + '#import "%s.h"\n' % manager_name
-            for y in xrange(1,int(random.uniform(3, 8))):
+            for y in xrange(1,int(random.uniform(2, fold_num))):
                 operate_content = operate_content + '[[%s sharedInstance] create%sByName:@"%s"];\n' % (manager_name, name, random.choice(all_class_info[name]))
         
         readme_file.write(import_content)
