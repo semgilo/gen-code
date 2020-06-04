@@ -537,13 +537,14 @@ class GenCode(object):
     def __init__(self):
         super(GenCode, self).__init__()
 
-    def generate(self, output=DEAULT_DST_PATH):
+    def generate(self, output, rootpath):
+        output = os.path.join(output, DEAULT_DST_PATH)
         _pre_name = gen_pre_name()
 
         file_dir = os.path.split(os.path.abspath(__file__))[0]
 
         # load words
-        noun_file = open(file_dir + '/noun_words', 'r')
+        noun_file = open(rootpath + '/noun_words', 'r')
         COMMON_WORDS = noun_file.readlines()
         noun_file.close()
         for i in range(0, len(COMMON_WORDS)):
